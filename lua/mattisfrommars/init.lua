@@ -1,10 +1,5 @@
-require("mattisfrommars.lazy")
-require("mattisfrommars.remap")
+vim.g.mapleader = " "
 
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-vim.cmd("set nowrap")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set mouse=")
+require("mattisfrommars.lazy")
+require("mattisfrommars.options")
+require("mattisfrommars.keymap")

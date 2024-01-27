@@ -7,6 +7,10 @@
     "branch": "main",
     "commit": "747bb955c5bfb2dc5d51280132f00a56a53f9f6d"
   },
+  "lualine.nvim": {
+    "branch": "master",
+    "commit": "7d131a8d3ba5016229e8a1d08bf8782acea98852"
+  },
   "neo-tree.nvim": {
     "branch": "v3.x",
     "commit": "2f2d08894bbc679d4d181604c16bb7079f646384"

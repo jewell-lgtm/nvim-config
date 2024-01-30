@@ -24,6 +24,7 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"tsserver",
+          "tailwindcss",
 					"kotlin_language_server",
 				},
 			})
@@ -36,6 +37,9 @@ return {
 			require("lspconfig").kotlin_language_server.setup({
 				capabilities = cmp_capabilities,
 			})
+			require("lspconfig").tailwindcss.setup({
+        capabilities = cmp_capabilities
+      })
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float)
@@ -60,7 +64,8 @@ return {
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-					vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
+					-- vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
+          -- renaming is done in rename.lua
 					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 				end,

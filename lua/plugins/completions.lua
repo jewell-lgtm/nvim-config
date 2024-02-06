@@ -7,6 +7,23 @@ return {
 		},
 	},
 	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
+		end,
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
@@ -14,7 +31,7 @@ return {
 			"hrsh7th/cmp-path",
 		},
 		config = function()
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -44,11 +61,11 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
-        experimental = {
-          ghost_text = {
-            hl_group = "CmpGhostText"
-          }
-        }
+				experimental = {
+					ghost_text = {
+						hl_group = "CmpGhostText",
+					},
+				},
 			})
 		end,
 	},

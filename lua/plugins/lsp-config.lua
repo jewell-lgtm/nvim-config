@@ -18,6 +18,8 @@ return {
     lazy = false,
     config = function()
       local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- add support for emmet-ls
+      cmp_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       require("mason").setup({})
       require("mason-lspconfig").setup({
@@ -26,7 +28,9 @@ return {
           "tsserver",
           "tailwindcss",
           "kotlin_language_server",
+          "svelte",
           "astro",
+          "emmet_ls"
         },
       })
       require("lspconfig").lua_ls.setup({
@@ -44,6 +48,28 @@ return {
       require("lspconfig").astro.setup({
         capabilities = cmp_capabilities,
       })
+      require("lspconfig").svelte.setup({
+        capabilities = cmp_capabilities,
+      })
+      require("lspconfig").emmet_ls.setup({
+        -- on_attach = on_attach,
+        capabilities = cmp_capabilities,
+        filetypes = {
+          "css",
+          "eruby",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "less",
+          "sass",
+          "scss",
+          "svelte",
+          "pug",
+          "typescriptreact",
+          "vue",
+        },
+      })
+
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float)

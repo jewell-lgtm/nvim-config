@@ -1,5 +1,21 @@
 return {
     {
+
+        'nvimtools/none-ls.nvim',
+        config = function()
+            local null_ls = require 'null-ls'
+
+            null_ls.setup {
+                sources = {
+                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.formatting.prettier,
+                },
+            }
+
+            vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format' })
+        end,
+    },
+    {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -23,8 +39,8 @@ return {
             vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
             -- See `:help K` for why this keymap
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = 'Hover Documentation' })
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {desc = 'Signature Documentation' })
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation' })
+            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
 
             -- [[ Configure LSP ]]
             --  This function gets run when an LSP connects to a particular buffer.
@@ -54,8 +70,6 @@ return {
                 nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
                 nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
                 nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-
 
                 -- Lesser used LSP functionality
                 nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -121,6 +135,7 @@ return {
 
                 tsserver = {},
                 svelte = {},
+                eslint = {}
             }
 
             -- Setup neovim lua configuration
@@ -147,9 +162,6 @@ return {
                     }
                 end,
             }
-        end
-
-
-
+        end,
     },
 }

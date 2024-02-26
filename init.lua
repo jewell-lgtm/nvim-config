@@ -25,6 +25,8 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
+vim.opt.termguicolors = true
+
 
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -41,6 +43,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+    { "rose-pine/neovim", name = "rose-pine",
+        config = function ()
+            require("rose-pine").setup({
+                disable_background = true,
+            })
+
+            vim.cmd("colorscheme rose-pine-main")
+        end
+    },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' }
@@ -145,3 +156,9 @@ config.setup({
     indent = { enable = true },
     auto_install = true
 })
+
+
+
+
+
+vim.keymap.set('n', '<leader>pt', ':Neotree filesystem toggle left<CR>', { desc = '[P]roject [T]ree' })

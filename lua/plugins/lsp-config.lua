@@ -22,6 +22,9 @@ return {
             vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
             vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+            -- See `:help K` for why this keymap
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {desc = 'Hover Documentation' })
+            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, {desc = 'Signature Documentation' })
 
             -- [[ Configure LSP ]]
             --  This function gets run when an LSP connects to a particular buffer.
@@ -52,13 +55,7 @@ return {
                 nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
                 nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-                if client.server_candidates.documentFormattingProvider then
-                    nmap('<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', '[F]ormat code')
-                end
 
-                -- See `:help K` for why this keymap
-                nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-                nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
                 -- Lesser used LSP functionality
                 nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -121,6 +118,9 @@ return {
                         -- diagnostics = { disable = { 'missing-fields' } },
                     },
                 },
+
+                tsserver = {},
+                svelte = {},
             }
 
             -- Setup neovim lua configuration

@@ -18,7 +18,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.o.mouse = ""
 
 vim.opt.swapfile = false
 vim.opt.backup = false

@@ -16,8 +16,6 @@ vim.opt.wrap = false
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
 
 vim.opt.swapfile = false
 vim.opt.backup = false

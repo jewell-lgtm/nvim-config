@@ -25,7 +25,7 @@ return {
 
             -- [[ Configure LSP ]]
             --  This function gets run when an LSP connects to a particular buffer.
-            local on_attach = function(_, bufnr)
+            local on_attach = function(client, bufnr)
                 -- NOTE: Remember that lua is a real programming language, and as such it is possible
                 -- to define small helper and utility functions so you don't have to repeat yourself
                 -- many times.
@@ -51,6 +51,10 @@ return {
                 nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
                 nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
                 nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+                if client.server_candidates.documentFormattingProvider then
+                    nmap('<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', '[F]ormat code')
+                end
 
                 -- See `:help K` for why this keymap
                 nmap('K', vim.lsp.buf.hover, 'Hover Documentation')

@@ -24,7 +24,7 @@ return {
         -- Adds a number of user-friendly snippets
         'rafamadriz/friendly-snippets',
     },
-    config = function ()
+    config = function()
         -- [[ Configure nvim-cmp ]]
         -- See `:help cmp`
         local cmp = require 'cmp'
@@ -76,5 +76,5 @@ return {
                 { name = 'path' },
             },
         }
-    end
-  }
+    end,
+}

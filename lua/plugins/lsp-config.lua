@@ -106,7 +106,10 @@ return {
             -- mason-lspconfig requires that these setup functions are called in this order
             -- before setting up the servers.
             require('mason').setup()
-            require('mason-lspconfig').setup()
+            require('mason-lspconfig').setup({
+                automatic_installation = true,
+                auto_installation = true,
+            })
 
             -- Enable the following language servers
             --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.

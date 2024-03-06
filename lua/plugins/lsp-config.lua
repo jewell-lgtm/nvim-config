@@ -1,31 +1,5 @@
 return {
     {
-
-        'nvimtools/none-ls.nvim',
-        config = function()
-            local null_ls = require 'null-ls'
-
-            null_ls.setup {
-                sources = {
-                    null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.formatting.prettier,
-                },
-            }
-
-            vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, { desc = 'Format' })
-            vim.api.nvim_create_autocmd('InsertLeave', {
-                pattern = '*',
-                callback = function()
-                    -- Make sure to check if LSP is attached and capable of formatting
-                    -- before attempting to format to avoid errors.
-                    if vim.lsp.buf.server_ready() then
-                        vim.lsp.buf.format { async = false }
-                    end
-                end,
-            })
-        end,
-    },
-    {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -151,7 +125,6 @@ return {
                 },
                 eslint = {
                     enable = true,
-                    format = { enable = true }, -- this will enable formatting
                     packageManager = 'pnpm',
                     autoFixOnSave = true,
                     codeActionsOnSave = {

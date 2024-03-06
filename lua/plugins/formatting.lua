@@ -1,6 +1,8 @@
 return {
   {
     'stevearc/conform.nvim',
+    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {},
     config = function()
       require('conform').setup {
@@ -16,6 +18,7 @@ return {
           svelte = { { 'prettierd', 'prettier' } },
           vue = { { 'prettierd', 'prettier' } },
           html = { { 'prettierd', 'prettier' } },
+          graphql = { { 'prettierd', 'prettier' } },
         },
       }
 

@@ -2,24 +2,22 @@ return {
     {
         'nvim-telescope/telescope-ui-select.nvim',
         config = function()
-            require('telescope').setup({
+            require('telescope').setup {
                 extensions = {
                     ['ui-select'] = {
-                        require("telescope.themes").get_dropdown({})
-                    }
-                }
-            })
+                        require('telescope.themes').get_dropdown {},
+                    },
+                },
+            }
 
-
-            require("telescope").load_extension("ui-select")
-        end
+            require('telescope').load_extension 'ui-select'
+        end,
     },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
-            local builtin = require("telescope.builtin")
-
+            local builtin = require 'telescope.builtin'
 
             -- Enable telescope fzf native, if installed
             pcall(require('telescope').load_extension, 'fzf')
@@ -41,7 +39,7 @@ return {
 
                 -- Find the Git root directory from the current file's path
                 local git_root = vim.fn.systemlist('git -C ' ..
-                    vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+                vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
                 if vim.v.shell_error ~= 0 then
                     print 'Not a git repository. Searching on current working directory'
                     return cwd
@@ -60,7 +58,6 @@ return {
             end
 
             vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
-
 
             -- See `:help telescope.builtin`
             vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
@@ -82,9 +79,6 @@ return {
                 }
             end
 
-
-
-
             vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
             vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin,
                 { desc = '[S]earch [S]elect Telescope' })
@@ -98,6 +92,6 @@ return {
             vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics,
                 { desc = '[S]earch [D]iagnostics' })
             vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-        end
+        end,
     },
 }

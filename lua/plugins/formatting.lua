@@ -14,6 +14,7 @@ return {
           typescriptreact = { { 'prettierd', 'prettier' } },
           css = { { 'prettierd', 'prettier' } },
           json = { { 'prettierd', 'prettier' } },
+          jsonc = { { 'prettierd', 'prettier' } },
           yaml = { { 'prettierd', 'prettier' } },
           svelte = { { 'prettierd', 'prettier' } },
           vue = { { 'prettierd', 'prettier' } },

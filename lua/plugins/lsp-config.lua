@@ -44,7 +44,7 @@ return {
           vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
         end
 
-        nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+        nmap('<leader>cr', vim.lsp.buf.rename, '[R]e[n]ame', '[C]ode [R]ename')
         nmap('<leader>ca', function()
           vim.lsp.buf.code_action { context = { only = { 'quickfix', 'refactor', 'source' } } }
         end, '[C]ode [A]ction')
@@ -60,7 +60,7 @@ return {
 
         -- Eslint specific
         if client.name == 'eslint' then
-          nmap('<C-e>', ':EslintFixAll<CR>', 'Eslint [F]ix [A]ll')
+          nmap('E', ':EslintFixAll<CR>', 'Eslint [F]ix [A]ll')
         end
 
         -- Lesser used LSP functionality
@@ -131,6 +131,7 @@ return {
         tsserver = {
           format = { enable = false },
         },
+
         eslint = {
           enable = true,
           packageManager = 'pnpm',
@@ -143,8 +144,14 @@ return {
             enable = true,
           },
         },
+
         svelte = {},
+
         emmet_ls = {
+          filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'svelte' },
+        },
+
+        tailwindcss = {
           filetypes = { 'html', 'css', 'javascript', 'typescript', 'javascriptreact', 'svelte' },
         },
       }

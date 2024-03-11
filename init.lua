@@ -20,6 +20,7 @@ vim.opt.wrap = false
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'W', ':w<CR>')
+vim.keymap.set('n', 'Q', ':q<CR>')
 
 vim.opt.termguicolors = true
 

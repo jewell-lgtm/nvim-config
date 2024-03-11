@@ -95,5 +95,4 @@ return {
       vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = 'Search [G]it [S]tatus' })
     end,
   },
-  { 'axkirillov/easypick.nvim', dependencies = 'nvim-telescope/telescope.nvim' },
 }

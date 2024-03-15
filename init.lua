@@ -24,6 +24,39 @@ vim.keymap.set('n', 'Q', ':q<CR>')
 
 vim.opt.termguicolors = true
 
+-- Initialize the timer
+local idle_timer = vim.loop.new_timer()
+
+-- Function to start or restart the idle timer
+local function reset_idle_timer()
+  idle_timer:stop()
+  idle_timer:start(
+    5000,
+    0,
+    vim.schedule_wrap(function()
+      -- Switch to normal mode if in insert or normal mode
+      local mode = vim.api.nvim_get_mode().mode
+      if mode == 'i' or mode == 'n' then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false)
+      end
+    end)
+  )
+end
+
+-- Auto-command to reset the timer on entering insert or normal mode
+vim.api.nvim_create_autocmd({ 'InsertEnter', 'CursorMoved', 'CursorMovedI' }, {
+  callback = function()
+    reset_idle_timer()
+  end,
+})
+
+-- Stop the timer on leaving insert mode to prevent mode changes
+vim.api.nvim_create_autocmd('InsertLeave', {
+  callback = function()
+    idle_timer:stop()
+  end,
+})
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {

@@ -187,6 +187,7 @@ return {
           'prettier', -- prettier formatter
           'stylua', -- lua formatter
         },
+        auto_installation = true,
       }
     end,
   },

@@ -190,6 +190,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Map ctrl+s to save
+vim.keymap.set('n', '<C-s>', '<cmd>write<CR>', { desc = 'Save the current file' })
+-- Map ctrl+q to quit
+vim.keymap.set('n', '<C-q>', '<cmd>quit<CR>', { desc = 'Quit the current window' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -489,6 +494,15 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<M-u>',
+          node_incremental = '<M-u>',
+          scope_incremental = false,
+          node_decremental = '<M-d>',
+        },
+      },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`

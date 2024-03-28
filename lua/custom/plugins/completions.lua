@@ -29,18 +29,6 @@ return {
       },
       'saadparwaiz1/cmp_luasnip',
 
-      {
-        'zbirenbaum/copilot.lua',
-        cmd = 'Copilot',
-        event = 'InsertEnter',
-        config = function()
-          require('copilot').setup {
-            suggestion = { enabled = true },
-            panel = { enabled = true },
-          }
-        end,
-      },
-
       -- Adds other completion capabilities.
       --  nvim-cmp does not ship with all sources by default. They are split
       --  into multiple repos for maintenance purposes.
@@ -110,7 +98,6 @@ return {
         sources = {
           { name = 'nvim_lsp', group_index = 1 },
 
-          { name = 'copilot', group_index = 2 },
           { name = 'luasnip', group_index = 2 },
           { name = 'path', group_index = 2 },
         },

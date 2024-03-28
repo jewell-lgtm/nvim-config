@@ -191,9 +191,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Map ctrl+s to save
-vim.keymap.set('n', '<C-s>', '<cmd>write<CR>', { desc = 'Save the current file' })
+vim.keymap.set('n', 'W', '<cmd>write<CR>', { desc = 'Save the current file' })
 -- Map ctrl+q to quit
-vim.keymap.set('n', '<C-q>', '<cmd>quit<CR>', { desc = 'Quit the current window' })
+vim.keymap.set('n', 'Q', '<cmd>quit<CR>', { desc = 'Quit the current window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

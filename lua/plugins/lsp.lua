@@ -109,15 +109,6 @@ return {
 			})
 		end,
 	},
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {
-			expose_as_code_action = {
-				"all",
-			},
-		},
-	},
 	{ -- LSP Configuration & Plugins
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -133,6 +124,15 @@ return {
 			-- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
 			-- used for completion, annotations and signatures of Neovim apis
 			{ "folke/neodev.nvim", opts = {} },
+
+			{
+				"pmizio/typescript-tools.nvim",
+				dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+				opts = {
+					expose_as_code_action = "all",
+					complete_function_calls = true,
+				},
+			},
 		},
 		config = function()
 			-- Brief aside: **What is LSP?**
@@ -207,7 +207,7 @@ return {
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>cr", vim.lsp.buf.rename, "([C]ode), [R]ename symbol")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -256,9 +256,9 @@ return {
 					--
 					-- This may be unwanted, since they displace some of your code
 					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-						map("<leader>th", function()
+						map("<leader>ch", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-						end, "[T]oggle Inlay [H]ints")
+						end, "Toggle [C]ode Inlay [H]ints")
 					end
 				end,
 			})
@@ -323,6 +323,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"prettier",
+				"tsserver",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

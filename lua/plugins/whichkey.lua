@@ -12,7 +12,7 @@ return { -- Useful plugin to show you pending keybinds.
 			["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
 			["<leader>p"] = { name = "[P]roject", _ = "which_key_ignore" },
 			["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-			["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
+			["<leader>t"] = { name = "[T]ests", _ = "which_key_ignore" },
 			["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
 		})
 		-- visual mode

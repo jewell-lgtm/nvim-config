@@ -70,9 +70,9 @@ return {
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
-					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
@@ -291,7 +291,12 @@ return {
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				-- tsserver = {},
-				--
+
+				["svelte-language-server"] = {},
+
+				["eslint"] = {
+					filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
+				},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -325,6 +330,7 @@ return {
 				"prettier",
 				"tsserver",
 			})
+
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
@@ -339,6 +345,12 @@ return {
 					end,
 				},
 			})
+
+			local eslint_server = servers["eslint"]
+			eslint_server.capabilities =
+				vim.tbl_deep_extend("force", {}, capabilities, eslint_server.capabilities or {})
+
+			require("lspconfig").eslint.setup(servers["eslint"])
 		end,
 	},
 }

@@ -14,7 +14,7 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- tab
-vim.opt.tabstop = 4
+vim.opt.tabstop = 2
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
